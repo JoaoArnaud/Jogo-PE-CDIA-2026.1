@@ -15,6 +15,13 @@ O trabalho faz parte das atividades do **2º período**, no semestre **2026.1**.
 
 O projeto consiste na implementação de um jogo da velha utilizando os conceitos estudados na disciplina de Programação Estruturada.
 
+## Estrutura do projeto
+
+| Pasta | Descrição |
+| --- | --- |
+| `src/` | Contém o código-fonte do projeto, ou seja, os arquivos `.c`. |
+| `include/` | Contém os arquivos de cabeçalho `.h`, usados para declarar funções, constantes e estruturas compartilhadas entre os arquivos `.c`. |
+
 ## Cronograma
 
 | Data | Atividade |
@@ -29,4 +36,3 @@ O projeto consiste na implementação de um jogo da velha utilizando os conceito
 
 - Linguagem C
 - Compilador C, como GCC
-
