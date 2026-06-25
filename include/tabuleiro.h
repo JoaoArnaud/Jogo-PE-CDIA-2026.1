@@ -1,6 +1,6 @@
 #ifndef TABULEIRO_H
 #define TABULEIRO_H
 
-int tabuleiro();
+void desenha();
 
 #endif /* TABULEIRO_H */

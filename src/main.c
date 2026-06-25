@@ -2,7 +2,6 @@
 #include "../include/tabuleiro.h"
 
 int main() {
-    printf("Hello, World!\n");
-    tabuleiro();
+    desenha();
     return 0;
 }
