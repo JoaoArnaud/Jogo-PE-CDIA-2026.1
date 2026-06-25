@@ -13,9 +13,9 @@ void desenha() {
         for (int j = 0; j < 3; j++) {
             char simbolo = ' ';
 
-            if (tabuleiro[i][j] == 1) {
+            if (tabuleiro[i][j] == 4) {
                 simbolo = 'X';
-            } else if (tabuleiro[i][j] == 2) {
+            } else if (tabuleiro[i][j] == 1) {
                 simbolo = 'O';
             }
 
@@ -33,4 +33,8 @@ void desenha() {
     }
 
     printf("\n");
+}
+
+int marcaJogada(int x, int y, int tipo) {
+    return 0;
 }
