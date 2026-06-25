@@ -1,21 +1,26 @@
 #include <stdio.h>
 
-int tabuleiro[3][3] = {
-    {0, 0, 0},
-    {0, 0, 0},
-    {0, 0, 0}
-};
+typedef struct {
+    int M[3][3];
+} Tabuleiro;
 
 void desenha() {
+
+    Tabuleiro tabuleiro = {{
+        {0, 0, 0}, 
+        {0, 0, 0}, 
+        {0, 0, 0}
+    }};
+
     printf("\n");
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             char simbolo = ' ';
 
-            if (tabuleiro[i][j] == 4) {
+            if (tabuleiro.M[i][j] == 4) {
                 simbolo = 'X';
-            } else if (tabuleiro[i][j] == 1) {
+            } else if (tabuleiro.M[i][j] == 1) {
                 simbolo = 'O';
             }
 
