@@ -2,5 +2,7 @@
 #define TABULEIRO_H
 
 void desenha();
+int temVencedor();
+void marcaJogada(int x, int y, int tipo);
 
 #endif /* TABULEIRO_H */
