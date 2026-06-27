@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include "../include/tabuleiro.h"
+#include "../include/partida.h"
 
 int main() {
-    printf("Hello, World!\n");
-    tabuleiro();
+    configuraJogadores();
+    inicia();
+
     return 0;
 }
