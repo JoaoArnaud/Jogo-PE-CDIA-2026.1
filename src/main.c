@@ -1,7 +1,8 @@
-#include <stdio.h>
-#include "../include/tabuleiro.h"
+#include "../include/partida.h"
 
 int main() {
-    desenha();
+    configuraJogadores();
+    inicia();
+
     return 0;
 }
