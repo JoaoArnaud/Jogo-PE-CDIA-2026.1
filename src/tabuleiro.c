@@ -17,35 +17,26 @@ static Tabuleiro tabuleiro = {{
     {0, 0, 0}
 }};
 
+//Mudança aqui
 void desenha() {
-
-    printf("\033[2J\033[H"); // limpa a tela
-
+    printf("\033[2J\033[H");
     printf("\n");
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            char simbolo = ' ';
-
             if (tabuleiro.M[i][j] == JOGADOR_X) {
-                simbolo = 'X';
+                printf(" X ");
             } else if (tabuleiro.M[i][j] == JOGADOR_O) {
-                simbolo = 'O';
+                printf(" O ");
+            } else {
+                printf(" %d ", i * 3 + j + 1); // mostra o número da posição
             }
 
-            printf(" %c ", simbolo);
-
-            if (j < 2) {
-                printf("|");
-            }
+            if (j < 2) printf("|");
         }
         printf("\n");
-
-        if (i < 2) {
-            printf("---+---+---\n");
-        }
+        if (i < 2) printf("---+---+---\n");
     }
-
     printf("\n");
 }
 
@@ -84,11 +75,13 @@ int temVencedor() {
     return DESCONHECIDO;
 }
 
-void marcaJogada(int x, int y, int tipo) {
+int marcaJogada(int x, int y, int tipo) {
     if (x >= 0 && x < 3 && y >= 0 && y < 3) {
         if (tabuleiro.M[x][y] == DESCONHECIDO) {
             tabuleiro.M[x][y] = tipo;
             desenha();
+            return 1;
         }
     }
+    return 0;
 }
