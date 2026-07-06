@@ -1,71 +1,59 @@
 #include <stdio.h>
+#include "../include/tabuleiro.h"
 
-typedef struct {
-    int M[3][3];
-} Tabuleiro;
-
-enum {
-    DESCONHECIDO = 0,
-    JOGADOR_O = 1,
-    EMPATE = 2,
-    JOGADOR_X = 4
-};
-
-static Tabuleiro tabuleiro = {{
-    {0, 0, 0},
-    {0, 0, 0},
-    {0, 0, 0}
-}};
-
-void desenha() {
-
-    printf("\033[2J\033[H"); // limpa a tela
-
+void desenha(Tabuleiro *tabuleiro) {
+    printf("\033[2J\033[H");
     printf("\n");
 
     for (int i = 0; i < 3; i++) {
+        // Primeiro tabuleiro: com números
         for (int j = 0; j < 3; j++) {
-            char simbolo = ' ';
-
-            if (tabuleiro.M[i][j] == JOGADOR_X) {
-                simbolo = 'X';
-            } else if (tabuleiro.M[i][j] == JOGADOR_O) {
-                simbolo = 'O';
-            }
-
-            printf(" %c ", simbolo);
-
-            if (j < 2) {
-                printf("|");
-            }
+            printf(" %d ", i * 3 + j + 1);
+            if (j < 2) printf("|");
         }
+
+        printf("          ");
+
+        // Segundo tabuleiro: sem números
+        for (int j = 0; j < 3; j++) {
+            if (tabuleiro->M[i][j] == JOGADOR_X) {
+                printf(" X ");
+            } else if (tabuleiro->M[i][j] == JOGADOR_O) {
+                printf(" O ");
+            } else {
+                printf("   ");
+            }
+
+            if (j < 2) printf("|");
+        }
+
         printf("\n");
 
         if (i < 2) {
-            printf("---+---+---\n");
+            printf("---+---+---          ---+---+---\n");
         }
     }
 
     printf("\n");
 }
 
-int temVencedor() {
+EstadoJogo temVencedor(Tabuleiro *tabuleiro) { // saí do padrão estabelecido no documento do trabalho, mas entra no pedido pelo professor
     int somas[8];
     int jogadas = 0;
 
     for (int i = 0; i < 3; i++) {
-        somas[i] = tabuleiro.M[i][0] + tabuleiro.M[i][1] + tabuleiro.M[i][2];
-        somas[i + 3] = tabuleiro.M[0][i] + tabuleiro.M[1][i] + tabuleiro.M[2][i];
+        somas[i] = tabuleiro->M[i][0] + tabuleiro->M[i][1] + tabuleiro->M[i][2];
+        somas[i + 3] = tabuleiro->M[0][i] + tabuleiro->M[1][i] + tabuleiro->M[2][i];
 
         for (int j = 0; j < 3; j++) {
-            if (tabuleiro.M[i][j] != DESCONHECIDO) {
+            if (tabuleiro->M[i][j] != DESCONHECIDO) {
                 jogadas++;
             }
         }
     }
 
-    somas[6] = tabuleiro.M[0][0] + tabuleiro.M[1][1] + tabuleiro.M[2][2];
-    somas[7] = tabuleiro.M[0][2] + tabuleiro.M[1][1] + tabuleiro.M[2][0];
+    somas[6] = tabuleiro->M[0][0] + tabuleiro->M[1][1] + tabuleiro->M[2][2];
+    somas[7] = tabuleiro->M[0][2] + tabuleiro->M[1][1] + tabuleiro->M[2][0];
 
     for (int i = 0; i < 8; i++) {
         if (somas[i] == JOGADOR_O * 3) {
@@ -84,11 +72,26 @@ int temVencedor() {
     return DESCONHECIDO;
 }
 
-void marcaJogada(int x, int y, int tipo) {
-    if (x >= 0 && x < 3 && y >= 0 && y < 3) {
-        if (tabuleiro.M[x][y] == DESCONHECIDO) {
-            tabuleiro.M[x][y] = tipo;
-            desenha();
+int marcaJogada(Tabuleiro *tabuleiro, int numero, EstadoJogo tipo) {
+    int contador = 1;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+
+            if (contador == numero) {
+                if (tabuleiro->M[i][j] == DESCONHECIDO) {
+                    tabuleiro->M[i][j] = tipo;
+                    desenha(tabuleiro);
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+            
+            contador++;
         }
     }
+
+    return 0;
 }
+

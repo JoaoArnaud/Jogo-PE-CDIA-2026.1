@@ -1,23 +1,40 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
 
-void joga(JogadorTeclado jogador) {
-    int linha;
-    int coluna;
-    int numeroJogador;
+void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
 
+    int numero;
+    int numeroJogador;
+    
     if (jogador.tipo == 1) {
         numeroJogador = 1;
-    } else {
+    }
+    else {
         numeroJogador = 2;
     }
 
-    printf("Jogador %d, digite a linha: ", numeroJogador);
-    scanf("%d", &linha);
+    while (true) {
+        printf("Jogador %d, escolha uma posição (1-9): ", numeroJogador);
 
-    printf("Jogador %d, digite a coluna: ", numeroJogador);
-    scanf("%d", &coluna);
+        if (scanf("%d", &numero) != 1) {
 
-    marcaJogada(linha - 1, coluna - 1, jogador.tipo);
+            while (getchar() != '\n');
+            printf("Entrada inválida. Digite um número de 1 a 9.\n");
+            continue;
+        }
+
+        if (numero < 1 || numero > 9) {
+            printf("Posição inválida. Escolha entre 1 e 9.\n");
+            continue;
+        }
+
+        if (!marcaJogada(tabuleiro, numero, jogador.tipo)) {
+            printf("Posição já ocupada. Escolha outra.\n");
+            continue;
+        }
+
+        break;
+    }
 }

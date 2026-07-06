@@ -1,8 +1,10 @@
 #include "../include/partida.h"
 
 int main() {
-    configuraJogadores();
-    inicia();
+    Partida partida = {0};
+
+    configuraJogadores(&partida);
+    inicia(&partida);
 
     return 0;
 }

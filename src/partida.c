@@ -3,34 +3,27 @@
 #include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
 
-typedef struct {
-    JogadorTeclado jogador1;
-    JogadorTeclado jogador2;
-} Partida;
-
-static Partida partida;
-
-void configuraJogadores() {
-    partida.jogador1.tipo = 1;
-    partida.jogador2.tipo = 4;
+void configuraJogadores(Partida *partida) {
+    partida->jogador1.tipo = 1;
+    partida->jogador2.tipo = 4;
 }
 
-void inicia() {
-    int resultado = 0;
+void inicia(Partida *partida) {
+    EstadoJogo resultado = DESCONHECIDO;
     int vez = 1;
 
-    desenha();
+    desenha(&partida->tabuleiro);
 
-    while (resultado == 0) {
+    while (resultado == DESCONHECIDO) {
         if (vez == 1) {
-            joga(partida.jogador1);
+            joga(partida->jogador1, &partida->tabuleiro);
             vez = 2;
         } else {
-            joga(partida.jogador2);
+            joga(partida->jogador2, &partida->tabuleiro);
             vez = 1;
         }
 
-        resultado = temVencedor();
+        resultado = temVencedor(&partida->tabuleiro);
     }
 
     if (resultado == 1) {
