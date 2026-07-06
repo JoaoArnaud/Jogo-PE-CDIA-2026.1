@@ -33,6 +33,8 @@ void inicia() {
         resultado = temVencedor();
     }
 
+    desenhaSemNumeros();
+
     if (resultado == 1) {
         printf("Jogador 1 venceu!\n");
     } else if (resultado == 4) {
