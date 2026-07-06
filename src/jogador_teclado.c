@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
 
@@ -6,7 +7,7 @@ void joga(JogadorTeclado jogador) {
     int numero;
     int numeroJogador = (jogador.tipo == 1) ? 1 : 2;
 
-    while (1) {
+    while (true) {
         printf("Jogador %d, escolha uma posição (1-9): ", numeroJogador);
 
         if (scanf("%d", &numero) != 1) {
