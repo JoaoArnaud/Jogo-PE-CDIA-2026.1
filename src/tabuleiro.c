@@ -6,20 +6,34 @@ void desenha(Tabuleiro *tabuleiro) {
     printf("\n");
 
     for (int i = 0; i < 3; i++) {
+        // Primeiro tabuleiro: com números
+        for (int j = 0; j < 3; j++) {
+            printf(" %d ", i * 3 + j + 1);
+            if (j < 2) printf("|");
+        }
+
+        printf("          ");
+
+        // Segundo tabuleiro: sem números
         for (int j = 0; j < 3; j++) {
             if (tabuleiro->M[i][j] == JOGADOR_X) {
                 printf(" X ");
             } else if (tabuleiro->M[i][j] == JOGADOR_O) {
                 printf(" O ");
             } else {
-                printf(" %d ", i * 3 + j + 1);
+                printf("   ");
             }
 
             if (j < 2) printf("|");
         }
+
         printf("\n");
-        if (i < 2) printf("---+---+---\n");
+
+        if (i < 2) {
+            printf("---+---+---          ---+---+---\n");
+        }
     }
+
     printf("\n");
 }
 
