@@ -16,5 +16,6 @@ void desenha(Tabuleiro *tabuleiro);
 EstadoJogo temVencedor(Tabuleiro *tabuleiro);
 
 int marcaJogada(Tabuleiro *tabuleiro, int x, int y, EstadoJogo tipo);
+int marcaJogadaPorNumero(Tabuleiro *tabuleiro, int numero, int tipo);
 
 #endif

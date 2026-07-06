@@ -82,3 +82,27 @@ int marcaJogada(Tabuleiro *tabuleiro, int x, int y, EstadoJogo tipo) {
     }
     return 0;
 }
+
+int marcaJogadaPorNumero(Tabuleiro *tabuleiro, int numero, int tipo) {
+    if (numero == 1) {
+        return marcaJogada(tabuleiro, 0, 0, tipo);
+    } else if (numero == 2) {
+        return marcaJogada(tabuleiro, 0, 1, tipo);
+    } else if (numero == 3) {
+        return marcaJogada(tabuleiro, 0, 2, tipo);
+    } else if (numero == 4) {
+        return marcaJogada(tabuleiro, 1, 0, tipo);
+    } else if (numero == 5) {
+        return marcaJogada(tabuleiro, 1, 1, tipo);
+    } else if (numero == 6) {
+        return marcaJogada(tabuleiro, 1, 2, tipo);
+    } else if (numero == 7) {
+        return marcaJogada(tabuleiro, 2, 0, tipo);
+    } else if (numero == 8) {
+        return marcaJogada(tabuleiro, 2, 1, tipo);
+    } else if (numero == 9) {
+        return marcaJogada(tabuleiro, 2, 2, tipo);
+    }
+
+    return 0;
+}

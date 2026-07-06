@@ -30,22 +30,7 @@ void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
             continue;
         }
 
-        int linha = -1;
-        int coluna = -1;
-        int contador = 1;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (contador == numero) {
-                    linha = i;
-                    coluna = j;
-                }
-
-                contador++;
-            }
-        }
-
-        if (!marcaJogada(tabuleiro, linha, coluna, jogador.tipo)) {
+        if (!marcaJogadaPorNumero(tabuleiro, numero, jogador.tipo)) {
             printf("Posição já ocupada. Escolha outra.\n");
             continue;
         }
