@@ -4,8 +4,10 @@
 #include "../include/tabuleiro.h"
 
 void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
+
     int numero;
     int numeroJogador;
+    
     if (jogador.tipo == 1) {
         numeroJogador = 1;
     }
@@ -28,8 +30,20 @@ void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
             continue;
         }
 
-        int linha  = (numero - 1) / 3;
-        int coluna = (numero - 1) % 3;
+        int linha = -1;
+        int coluna = -1;
+        int contador = 1;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (contador == numero) {
+                    linha = i;
+                    coluna = j;
+                }
+
+                contador++;
+            }
+        }
 
         if (!marcaJogada(tabuleiro, linha, coluna, jogador.tipo)) {
             printf("Posição já ocupada. Escolha outra.\n");
