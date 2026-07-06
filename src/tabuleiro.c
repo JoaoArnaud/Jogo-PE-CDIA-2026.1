@@ -1,8 +1,5 @@
 #include <stdio.h>
-
-typedef struct {
-    int M[3][3];
-} Tabuleiro; // definir .h
+#include "../include/tabuleiro.h"
 
 enum {
     DESCONHECIDO = 0,
