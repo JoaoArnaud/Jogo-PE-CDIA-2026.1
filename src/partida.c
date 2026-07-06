@@ -6,6 +6,7 @@
 typedef struct {
     JogadorTeclado jogador1;
     JogadorTeclado jogador2;
+    Tabuleiro tabuleiro;
 } Partida;
 
 static Partida partida;
@@ -16,21 +17,21 @@ void configuraJogadores() {
 }
 
 void inicia() {
-    int resultado = 0;
+    EstadoJogo resultado = DESCONHECIDO;
     int vez = 1;
 
-    desenha();
+    desenha(&partida.tabuleiro);
 
-    while (resultado == 0) {
+    while (resultado == DESCONHECIDO) {
         if (vez == 1) {
-            joga(partida.jogador1);
+            joga(partida.jogador1, &partida.tabuleiro);
             vez = 2;
         } else {
-            joga(partida.jogador2);
+            joga(partida.jogador2, &partida.tabuleiro);
             vez = 1;
         }
 
-        resultado = temVencedor();
+        resultado = temVencedor(&partida.tabuleiro);
     }
 
     if (resultado == 1) {

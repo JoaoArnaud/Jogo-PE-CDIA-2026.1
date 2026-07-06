@@ -12,9 +12,9 @@ typedef struct {
     int M[3][3];
 } Tabuleiro;
 
-void desenha();
-EstadoJogo temVencedor();
+void desenha(Tabuleiro *tabuleiro);
+EstadoJogo temVencedor(Tabuleiro *tabuleiro);
 
-int marcaJogada(int x, int y, EstadoJogo tipo);
+int marcaJogada(Tabuleiro *tabuleiro, int x, int y, EstadoJogo tipo);
 
 #endif

@@ -3,7 +3,7 @@
 #include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
 
-void joga(JogadorTeclado jogador) {
+void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
     int numero;
     int numeroJogador = (jogador.tipo == 1) ? 1 : 2;
 
@@ -25,7 +25,7 @@ void joga(JogadorTeclado jogador) {
         int linha  = (numero - 1) / 3;
         int coluna = (numero - 1) % 3;
 
-        if (!marcaJogada(linha, coluna, jogador.tipo)) {
+        if (!marcaJogada(tabuleiro, linha, coluna, jogador.tipo)) {
             printf("Posição já ocupada. Escolha outra.\n");
             continue;
         }
