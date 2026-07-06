@@ -2,22 +2,21 @@
 
 typedef struct {
     int M[3][3];
-} Tabuleiro;
+} Tabuleiro; // definir .h
 
 enum {
     DESCONHECIDO = 0,
     JOGADOR_O = 1,
     EMPATE = 2,
     JOGADOR_X = 4
-};
+}; // definir tipo
 
 static Tabuleiro tabuleiro = {{
     {0, 0, 0},
     {0, 0, 0},
-    {0, 0, 0}
+    {0, 0, 0} // passar por referencia (retirar static)
 }};
 
-//Mudança aqui
 void desenha() {
     printf("\033[2J\033[H");
     printf("\n");
@@ -29,7 +28,7 @@ void desenha() {
             } else if (tabuleiro.M[i][j] == JOGADOR_O) {
                 printf(" O ");
             } else {
-                printf(" %d ", i * 3 + j + 1); // mostra o número da posição
+                printf(" %d ", i * 3 + j + 1);
             }
 
             if (j < 2) printf("|");

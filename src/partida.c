@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../include/partida.h"
-#include "jogador_teclado.h"
+#include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
 
 typedef struct {

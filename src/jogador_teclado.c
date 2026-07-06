@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include "jogador_teclado.h"
+#include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
 
-// mudança aqui
 void joga(JogadorTeclado jogador) {
     int numero;
     int numeroJogador = (jogador.tipo == 1) ? 1 : 2;
@@ -11,7 +10,7 @@ void joga(JogadorTeclado jogador) {
         printf("Jogador %d, escolha uma posição (1-9): ", numeroJogador);
 
         if (scanf("%d", &numero) != 1) {
-            // entrada não é número — limpa o buffer
+
             while (getchar() != '\n');
             printf("Entrada inválida. Digite um número de 1 a 9.\n");
             continue;
@@ -30,6 +29,6 @@ void joga(JogadorTeclado jogador) {
             continue;
         }
 
-        break; // jogada válida, sai do loop
+        break;
     }
 }

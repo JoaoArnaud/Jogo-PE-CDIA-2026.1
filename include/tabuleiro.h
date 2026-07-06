@@ -3,7 +3,7 @@
 
 void desenha();
 int temVencedor();
-// mudança aqui
+
 int marcaJogada(int x, int y, int tipo);
 
 #endif
