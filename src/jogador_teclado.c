@@ -5,7 +5,13 @@
 
 void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
     int numero;
-    int numeroJogador = (jogador.tipo == 1) ? 1 : 2;
+    int numeroJogador;
+    if (jogador.tipo == 1) {
+        numeroJogador = 1;
+    }
+    else {
+        numeroJogador = 2;
+    }
 
     while (true) {
         printf("Jogador %d, escolha uma posição (1-9): ", numeroJogador);
