@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include "../include/tabuleiro.h"
 
-enum {
-    DESCONHECIDO = 0,
-    JOGADOR_O = 1,
-    EMPATE = 2,
-    JOGADOR_X = 4
-}; // definir tipo
-
 static Tabuleiro tabuleiro = {{
     {0, 0, 0},
     {0, 0, 0},
@@ -36,7 +29,7 @@ void desenha() {
     printf("\n");
 }
 
-int temVencedor() {
+EstadoJogo temVencedor() { // saí do padrão estabelecido no documento do trabalho, mas entra no pedido pelo professor
     int somas[8];
     int jogadas = 0;
 
@@ -71,7 +64,7 @@ int temVencedor() {
     return DESCONHECIDO;
 }
 
-int marcaJogada(int x, int y, int tipo) {
+int marcaJogada(int x, int y, EstadoJogo tipo) {
     if (x >= 0 && x < 3 && y >= 0 && y < 3) {
         if (tabuleiro.M[x][y] == DESCONHECIDO) {
             tabuleiro.M[x][y] = tipo;
