@@ -17,6 +17,7 @@ static Tabuleiro tabuleiro = {{
     {0, 0, 0}
 }};
 
+//Mudança aqui
 void desenha() {
     printf("\033[2J\033[H");
     printf("\n");
@@ -28,28 +29,9 @@ void desenha() {
             } else if (tabuleiro.M[i][j] == JOGADOR_O) {
                 printf(" O ");
             } else {
-                printf(" %d ", i * 3 + j + 1);
+                printf(" %d ", i * 3 + j + 1); // mostra o número da posição
             }
-            if (j < 2) printf("|");
-        }
-        printf("\n");
-        if (i < 2) printf("---+---+---\n");
-    }
-    printf("\n");
-}
 
-void desenhaSemNumeros() {
-    printf("\n");
-
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (tabuleiro.M[i][j] == JOGADOR_X) {
-                printf(" X ");
-            } else if (tabuleiro.M[i][j] == JOGADOR_O) {
-                printf(" O ");
-            } else {
-                printf("   ");
-            }
             if (j < 2) printf("|");
         }
         printf("\n");
@@ -103,28 +85,3 @@ int marcaJogada(int x, int y, int tipo) {
     }
     return 0;
 }
-
-int marcaJogadaPorNumero(int numero, int tipo) {
-    if (numero == 1) {
-        return marcaJogada(0, 0, tipo);
-    } else if (numero == 2) {
-        return marcaJogada(0, 1, tipo);
-    } else if (numero == 3) {
-        return marcaJogada(0, 2, tipo);
-    } else if (numero == 4) {
-        return marcaJogada(1, 0, tipo);
-    } else if (numero == 5) {
-        return marcaJogada(1, 1, tipo);
-    } else if (numero == 6) {
-        return marcaJogada(1, 2, tipo);
-    } else if (numero == 7) {
-        return marcaJogada(2, 0, tipo);
-    } else if (numero == 8) {
-        return marcaJogada(2, 1, tipo);
-    } else if (numero == 9) {
-        return marcaJogada(2, 2, tipo);
-    }
-
-    return 0;
-}
-
