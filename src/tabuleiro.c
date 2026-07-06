@@ -72,37 +72,26 @@ EstadoJogo temVencedor(Tabuleiro *tabuleiro) { // saí do padrão estabelecido n
     return DESCONHECIDO;
 }
 
-int marcaJogada(Tabuleiro *tabuleiro, int x, int y, EstadoJogo tipo) {
-    if (x >= 0 && x < 3 && y >= 0 && y < 3) {
-        if (tabuleiro->M[x][y] == DESCONHECIDO) {
-            tabuleiro->M[x][y] = tipo;
-            desenha(tabuleiro);
-            return 1;
+int marcaJogada(Tabuleiro *tabuleiro, int numero, EstadoJogo tipo) {
+    int contador = 1;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+
+            if (contador == numero) {
+                if (tabuleiro->M[i][j] == DESCONHECIDO) {
+                    tabuleiro->M[i][j] = tipo;
+                    desenha(tabuleiro);
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+            
+            contador++;
         }
     }
-    return 0;
-}
-
-int marcaJogadaPorNumero(Tabuleiro *tabuleiro, int numero, int tipo) {
-    if (numero == 1) {
-        return marcaJogada(tabuleiro, 0, 0, tipo);
-    } else if (numero == 2) {
-        return marcaJogada(tabuleiro, 0, 1, tipo);
-    } else if (numero == 3) {
-        return marcaJogada(tabuleiro, 0, 2, tipo);
-    } else if (numero == 4) {
-        return marcaJogada(tabuleiro, 1, 0, tipo);
-    } else if (numero == 5) {
-        return marcaJogada(tabuleiro, 1, 1, tipo);
-    } else if (numero == 6) {
-        return marcaJogada(tabuleiro, 1, 2, tipo);
-    } else if (numero == 7) {
-        return marcaJogada(tabuleiro, 2, 0, tipo);
-    } else if (numero == 8) {
-        return marcaJogada(tabuleiro, 2, 1, tipo);
-    } else if (numero == 9) {
-        return marcaJogada(tabuleiro, 2, 2, tipo);
-    }
 
     return 0;
 }
+

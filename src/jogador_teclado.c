@@ -30,7 +30,7 @@ void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
             continue;
         }
 
-        if (!marcaJogadaPorNumero(tabuleiro, numero, jogador.tipo)) {
+        if (!marcaJogada(tabuleiro, numero, jogador.tipo)) {
             printf("Posição já ocupada. Escolha outra.\n");
             continue;
         }
