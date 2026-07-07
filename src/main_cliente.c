@@ -7,34 +7,31 @@
 
 #define PORTA 8080
 
-// Jogador cliente: pede a conexao, joga com O e joga em segundo.
-// Uso: ./cliente <ip-do-servidor>  (padrao 127.0.0.1, mesmo computador)
 int main(int argc, char *argv[]) {
     const char *ip = (argc > 1) ? argv[1] : "127.0.0.1";
 
     Tabuleiro tabuleiro = {0};
 
-    JogadorTeclado local = { .tipo = JOGADOR_O };      // este processo joga com O
-    JogadorRemoto adversario = { .tipo = JOGADOR_X };  // o servidor joga com X
+    JogadorTeclado local = { .tipo = JOGADOR_O };
+    JogadorRemoto adversario = { .tipo = JOGADOR_X };
 
     printf("=== Jogo da Velha - Cliente (você é o jogador O) ===\n");
 
-    // conecta(ip, porta): cria o Socket e conecta ao servidor
     conecta(&adversario, ip, PORTA);
 
     EstadoJogo resultado = DESCONHECIDO;
-    bool vezLocal = false;  // o servidor (X) comeca, entao o cliente espera primeiro
+    bool vezLocal = false;
 
     desenha(&tabuleiro);
 
     while (resultado == DESCONHECIDO) {
         if (vezLocal) {
             printf("--- Sua vez (O) ---\n");
-            joga(local, &tabuleiro, &adversario);   // le do teclado, marca e envia
+            joga(local, &tabuleiro, &adversario);
             vezLocal = false;
         } else {
             printf("Aguardando jogada do adversário...\n");
-            jogaRemoto(&adversario, &tabuleiro);     // bloqueia ate receber e marca
+            jogaRemoto(&adversario, &tabuleiro);
             vezLocal = true;
         }
 
