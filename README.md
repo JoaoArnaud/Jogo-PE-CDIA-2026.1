@@ -22,6 +22,52 @@ O projeto consiste na implementação de um jogo da velha utilizando os conceito
 | `src/` | Contém o código-fonte do projeto, ou seja, os arquivos `.c`. |
 | `include/` | Contém os arquivos de cabeçalho `.h`, usados para declarar funções, constantes e estruturas compartilhadas entre os arquivos `.c`. |
 
+## Como compilar
+
+O projeto gera três executáveis (na pasta `build/`), compilados diretamente com o `gcc`:
+
+```bash
+mkdir -p build
+
+# Menu com o modo local (dois jogadores no mesmo teclado):
+gcc src/main.c src/menu.c src/partida.c src/jogador_teclado.c src/jogador_remoto.c src/tabuleiro.c -o build/jogo-da-velha
+
+# Modo online - servidor (jogador X):
+gcc src/main_servidor.c src/jogador_teclado.c src/jogador_remoto.c src/tabuleiro.c -o build/servidor
+
+# Modo online - cliente (jogador O):
+gcc src/main_cliente.c src/jogador_teclado.c src/jogador_remoto.c src/tabuleiro.c -o build/cliente
+```
+
+| Executável | Descrição |
+| --- | --- |
+| `build/jogo-da-velha` | Menu com o modo local (dois jogadores no mesmo teclado). |
+| `build/servidor` | Modo online: jogador **X**, que espera a conexão e começa a partida. |
+| `build/cliente` | Modo online: jogador **O**, que se conecta ao servidor. |
+
+Para limpar os binários, basta apagar a pasta: `rm -rf build`.
+
+## Como jogar o modo online (socket)
+
+O modo 3 usa dois programas separados que se comunicam por sockets TCP:
+
+1. Em um computador, inicie o **servidor** (jogador X, começa jogando):
+
+   ```bash
+   ./build/servidor
+   ```
+
+2. No outro computador, inicie o **cliente** (jogador O) informando o IP do
+   servidor. No mesmo computador, o IP padrão `127.0.0.1` já é usado:
+
+   ```bash
+   ./build/cliente 192.168.0.10   # IP do servidor
+   ./build/cliente                # mesmo computador (127.0.0.1)
+   ```
+
+Depois de conectados, as jogadas são intercaladas (X começa) até que alguém
+vença ou o jogo termine em empate. A porta usada é a `8080`.
+
 ## Cronograma
 
 | Data | Atividade |

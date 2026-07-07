@@ -16,10 +16,10 @@ void inicia(Partida *partida) {
 
     while (resultado == DESCONHECIDO) {
         if (vez == 1) {
-            joga(partida->jogador1, &partida->tabuleiro);
+            joga(partida->jogador1, &partida->tabuleiro, NULL);
             vez = 2;
         } else {
-            joga(partida->jogador2, &partida->tabuleiro);
+            joga(partida->jogador2, &partida->tabuleiro, NULL);
             vez = 1;
         }
 
