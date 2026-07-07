@@ -34,7 +34,7 @@ void aceita(JogadorRemoto *jogador, int porta) {
         exit(EXIT_FAILURE);
     }
 
-    printf("Aguardando conexao do outro jogador na porta %d...\n", porta);
+    printf("Aguardando conexão do outro jogador na porta %d...\n", porta);
 
     jogador->socket = accept(jogador->serverSocket, (struct sockaddr *)&endereco, &endereco_len);
     if (jogador->socket < 0) {
