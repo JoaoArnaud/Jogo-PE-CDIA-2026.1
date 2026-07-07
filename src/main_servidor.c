@@ -37,9 +37,9 @@ int main() {
     }
 
     if (resultado == JOGADOR_X) {
-        printf("Voce (X) venceu!\n");
+        printf("Você (X) venceu!\n");
     } else if (resultado == JOGADOR_O) {
-        printf("Voce (X) perdeu!\n");
+        printf("Você (X) perdeu!\n");
     } else {
         printf("Empate!\n");
     }
