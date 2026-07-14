@@ -11,9 +11,9 @@ O trabalho faz parte das atividades do **2º período**, no semestre **2026.1**.
 | João André de Medeiros Arnaud | [@JoaoArnaud](https://github.com/JoaoArnaud) |
 | Eduardo Antônio Leitão do Oliveira Lima e Moura Filho | [@EduardoLeitaoFilho](https://github.com/EduardoLeitaoFilho) |
 
-## Sobre o projeto
+## Sobre o projeto - V3
 
-O projeto consiste na implementação de um jogo da velha utilizando os conceitos estudados na disciplina de Programação Estruturada.
+A terceira entrega do projeto, consiste na possibilidade de jogar online com outro jogador, via socket.
 
 ## Estrutura do projeto
 
