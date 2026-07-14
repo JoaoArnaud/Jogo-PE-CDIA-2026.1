@@ -11,9 +11,9 @@ O trabalho faz parte das atividades do **2º período**, no semestre **2026.1**.
 | João André de Medeiros Arnaud | [@JoaoArnaud](https://github.com/JoaoArnaud) |
 | Eduardo Antônio Leitão do Oliveira Lima e Moura Filho | [@EduardoLeitaoFilho](https://github.com/EduardoLeitaoFilho) |
 
-## Sobre o projeto - V1
+## Sobre o projeto - V2
 
-A primeira entrega da atividade, consiste na versão mais simplificada do projeto. Apenas um jogo da velha simples com a possibilidade de jogo local e somente com 2 pessoas (não é possível jogar sozinho com robô, nem em duas máquinas distintas).
+A segunda entrega da atividade, consiste na versão com 2 pessoas locais e com jogador BOT. Uma IA simples para jogar contra o usuário.
 
 ## Estrutura do projeto
 
