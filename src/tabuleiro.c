@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../include/tabuleiro.h"
+#include "../include/menu.h"
 
 void desenha(Tabuleiro *tabuleiro) {
     printf("\033[2J\033[H");
