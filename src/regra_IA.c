@@ -8,7 +8,7 @@ static const int LINHAS[8][3] = {
     {1, 5, 9}, {3, 5, 7}
 };
 
-static int valor(Tabuleiro *tabuleiro, int pos) {
+static EstadoJogo valor(Tabuleiro *tabuleiro, int pos) {
     int contador = 1;
 
     for (int i = 0; i < 3; i++) {
@@ -55,9 +55,9 @@ static int ameacas(Tabuleiro *tabuleiro, EstadoJogo tipo) {
     int total = 0;
 
     for (int i = 0; i < 8; i++) {
-        int a = valor(tabuleiro, LINHAS[i][0]);
-        int b = valor(tabuleiro, LINHAS[i][1]);
-        int c = valor(tabuleiro, LINHAS[i][2]);
+        EstadoJogo a = valor(tabuleiro, LINHAS[i][0]);
+        EstadoJogo b = valor(tabuleiro, LINHAS[i][1]);
+        EstadoJogo c = valor(tabuleiro, LINHAS[i][2]);
 
         int marcas = (a == tipo) + (b == tipo) + (c == tipo);
         int vazios = (a == DESCONHECIDO) + (b == DESCONHECIDO) + (c == DESCONHECIDO);

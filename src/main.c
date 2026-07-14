@@ -20,7 +20,7 @@ int main() {
             break;
  
         case MODO_SOCKET:
-            printf("\nModo online (socket) ainda em desenvolvimento.\n");
+            printf("\nModo online (socket): use os dois programas separados.\n");
             break;
  
         default:

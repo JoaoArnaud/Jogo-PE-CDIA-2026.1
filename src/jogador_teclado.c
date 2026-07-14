@@ -2,9 +2,8 @@
 #include <stdbool.h>
 #include "../include/jogador_teclado.h"
 #include "../include/tabuleiro.h"
- 
-void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
- 
+
+void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro, JogadorRemoto *remoto) {
     int numero;
     int numeroJogador;
  
@@ -36,5 +35,8 @@ void joga(JogadorTeclado jogador, Tabuleiro *tabuleiro) {
         }
  
         break;
+    }
+    if (remoto != NULL) {
+        enviaJogada(remoto, numero);
     }
 }
